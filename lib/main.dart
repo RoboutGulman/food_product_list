@@ -23,6 +23,8 @@ class MyApp extends StatelessWidget {
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
+      //TODO:
+      //сделать popUp или alertDialog вместо навигации
       routes: {
         '/': (context) => const HomePage(),
         '/dish_forms': (context) => const DishForms()

@@ -21,14 +21,12 @@ Dish _$DishFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Dish {
   int get id => throw _privateConstructorUsedError;
-  String? get name => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
-  int get type => throw _privateConstructorUsedError;
-  double get cost => throw _privateConstructorUsedError;
-  String? get imagePath => throw _privateConstructorUsedError;
-  bool get single => throw _privateConstructorUsedError;
-  String? get weight => throw _privateConstructorUsedError;
-  int get idSupplier => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  double get price => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  DishType get type => throw _privateConstructorUsedError;
+  String get weight => throw _privateConstructorUsedError;
+  String get imagePath => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,14 +39,12 @@ abstract class $DishCopyWith<$Res> {
       _$DishCopyWithImpl<$Res>;
   $Res call(
       {int id,
-      String? name,
-      String? description,
-      int type,
-      double cost,
-      String? imagePath,
-      bool single,
-      String? weight,
-      int idSupplier});
+      String name,
+      double price,
+      String description,
+      DishType type,
+      String weight,
+      String imagePath});
 }
 
 /// @nodoc
@@ -63,13 +59,11 @@ class _$DishCopyWithImpl<$Res> implements $DishCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? price = freezed,
     Object? description = freezed,
     Object? type = freezed,
-    Object? cost = freezed,
-    Object? imagePath = freezed,
-    Object? single = freezed,
     Object? weight = freezed,
-    Object? idSupplier = freezed,
+    Object? imagePath = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -79,35 +73,27 @@ class _$DishCopyWithImpl<$Res> implements $DishCopyWith<$Res> {
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      price: price == freezed
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as int,
-      cost: cost == freezed
-          ? _value.cost
-          : cost // ignore: cast_nullable_to_non_nullable
-              as double,
-      imagePath: imagePath == freezed
-          ? _value.imagePath
-          : imagePath // ignore: cast_nullable_to_non_nullable
-              as String?,
-      single: single == freezed
-          ? _value.single
-          : single // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as DishType,
       weight: weight == freezed
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
-              as String?,
-      idSupplier: idSupplier == freezed
-          ? _value.idSupplier
-          : idSupplier // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
+      imagePath: imagePath == freezed
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -119,14 +105,12 @@ abstract class _$$_DishCopyWith<$Res> implements $DishCopyWith<$Res> {
   @override
   $Res call(
       {int id,
-      String? name,
-      String? description,
-      int type,
-      double cost,
-      String? imagePath,
-      bool single,
-      String? weight,
-      int idSupplier});
+      String name,
+      double price,
+      String description,
+      DishType type,
+      String weight,
+      String imagePath});
 }
 
 /// @nodoc
@@ -142,13 +126,11 @@ class __$$_DishCopyWithImpl<$Res> extends _$DishCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? price = freezed,
     Object? description = freezed,
     Object? type = freezed,
-    Object? cost = freezed,
-    Object? imagePath = freezed,
-    Object? single = freezed,
     Object? weight = freezed,
-    Object? idSupplier = freezed,
+    Object? imagePath = freezed,
   }) {
     return _then(_$_Dish(
       id: id == freezed
@@ -158,35 +140,27 @@ class __$$_DishCopyWithImpl<$Res> extends _$DishCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      price: price == freezed
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as int,
-      cost: cost == freezed
-          ? _value.cost
-          : cost // ignore: cast_nullable_to_non_nullable
-              as double,
-      imagePath: imagePath == freezed
-          ? _value.imagePath
-          : imagePath // ignore: cast_nullable_to_non_nullable
-              as String?,
-      single: single == freezed
-          ? _value.single
-          : single // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as DishType,
       weight: weight == freezed
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
-              as String?,
-      idSupplier: idSupplier == freezed
-          ? _value.idSupplier
-          : idSupplier // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
+      imagePath: imagePath == freezed
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -197,38 +171,32 @@ class _$_Dish implements _Dish {
   const _$_Dish(
       {required this.id,
       required this.name,
+      required this.price,
       required this.description,
       required this.type,
-      required this.cost,
-      required this.imagePath,
-      required this.single,
       required this.weight,
-      required this.idSupplier});
+      required this.imagePath});
 
   factory _$_Dish.fromJson(Map<String, dynamic> json) => _$$_DishFromJson(json);
 
   @override
   final int id;
   @override
-  final String? name;
+  final String name;
   @override
-  final String? description;
+  final double price;
   @override
-  final int type;
+  final String description;
   @override
-  final double cost;
+  final DishType type;
   @override
-  final String? imagePath;
+  final String weight;
   @override
-  final bool single;
-  @override
-  final String? weight;
-  @override
-  final int idSupplier;
+  final String imagePath;
 
   @override
   String toString() {
-    return 'Dish(id: $id, name: $name, description: $description, type: $type, cost: $cost, imagePath: $imagePath, single: $single, weight: $weight, idSupplier: $idSupplier)';
+    return 'Dish(id: $id, name: $name, price: $price, description: $description, type: $type, weight: $weight, imagePath: $imagePath)';
   }
 
   @override
@@ -238,15 +206,12 @@ class _$_Dish implements _Dish {
             other is _$_Dish &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.price, price) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality().equals(other.cost, cost) &&
-            const DeepCollectionEquality().equals(other.imagePath, imagePath) &&
-            const DeepCollectionEquality().equals(other.single, single) &&
             const DeepCollectionEquality().equals(other.weight, weight) &&
-            const DeepCollectionEquality()
-                .equals(other.idSupplier, idSupplier));
+            const DeepCollectionEquality().equals(other.imagePath, imagePath));
   }
 
   @JsonKey(ignore: true)
@@ -255,13 +220,11 @@ class _$_Dish implements _Dish {
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(price),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(type),
-      const DeepCollectionEquality().hash(cost),
-      const DeepCollectionEquality().hash(imagePath),
-      const DeepCollectionEquality().hash(single),
       const DeepCollectionEquality().hash(weight),
-      const DeepCollectionEquality().hash(idSupplier));
+      const DeepCollectionEquality().hash(imagePath));
 
   @JsonKey(ignore: true)
   @override
@@ -279,35 +242,29 @@ class _$_Dish implements _Dish {
 abstract class _Dish implements Dish {
   const factory _Dish(
       {required final int id,
-      required final String? name,
-      required final String? description,
-      required final int type,
-      required final double cost,
-      required final String? imagePath,
-      required final bool single,
-      required final String? weight,
-      required final int idSupplier}) = _$_Dish;
+      required final String name,
+      required final double price,
+      required final String description,
+      required final DishType type,
+      required final String weight,
+      required final String imagePath}) = _$_Dish;
 
   factory _Dish.fromJson(Map<String, dynamic> json) = _$_Dish.fromJson;
 
   @override
   int get id;
   @override
-  String? get name;
+  String get name;
   @override
-  String? get description;
+  double get price;
   @override
-  int get type;
+  String get description;
   @override
-  double get cost;
+  DishType get type;
   @override
-  String? get imagePath;
+  String get weight;
   @override
-  bool get single;
-  @override
-  String? get weight;
-  @override
-  int get idSupplier;
+  String get imagePath;
   @override
   @JsonKey(ignore: true)
   _$$_DishCopyWith<_$_Dish> get copyWith => throw _privateConstructorUsedError;

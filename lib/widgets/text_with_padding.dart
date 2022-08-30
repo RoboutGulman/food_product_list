@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
 class TextWithPadding extends StatelessWidget {
-  const TextWithPadding({Key? key, required this.content, this.bold = false})
+  const TextWithPadding({Key? key, required this.text, this.isBold = false})
       : super(key: key);
 
-  final String? content;
-  final bool bold;
+  final String text;
+  final bool isBold;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 6),
-      child: Text(content ?? '',
+      child: Text(text,
           style: TextStyle(
-              fontWeight: bold ? FontWeight.bold : FontWeight.normal)),
+              fontWeight: isBold ? FontWeight.bold : FontWeight.normal)),
     );
   }
 }

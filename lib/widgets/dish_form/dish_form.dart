@@ -28,6 +28,10 @@ class _DishFormsState extends State<DishForms> {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                //TODO:
+                //переименовать form в Field/input
+                //сократить количество виджетов
+                
                 const SupplierForm(),
                 const Gap(10),
                 const CoreTextForm(name: 'name', label: 'название'),

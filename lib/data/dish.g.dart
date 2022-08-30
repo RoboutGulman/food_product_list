@@ -8,24 +8,27 @@ part of 'dish.dart';
 
 _$_Dish _$$_DishFromJson(Map<String, dynamic> json) => _$_Dish(
       id: json['id'] as int,
-      name: json['name'] as String?,
-      description: json['description'] as String?,
-      type: json['type'] as int,
-      cost: (json['cost'] as num).toDouble(),
-      imagePath: json['imagePath'] as String?,
-      single: json['single'] as bool,
-      weight: json['weight'] as String?,
-      idSupplier: json['idSupplier'] as int,
+      name: json['name'] as String,
+      price: (json['price'] as num).toDouble(),
+      description: json['description'] as String,
+      type: $enumDecode(_$DishTypeEnumMap, json['type']),
+      weight: json['weight'] as String,
+      imagePath: json['imagePath'] as String,
     );
 
 Map<String, dynamic> _$$_DishToJson(_$_Dish instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
+      'price': instance.price,
       'description': instance.description,
-      'type': instance.type,
-      'cost': instance.cost,
-      'imagePath': instance.imagePath,
-      'single': instance.single,
+      'type': _$DishTypeEnumMap[instance.type]!,
       'weight': instance.weight,
-      'idSupplier': instance.idSupplier,
+      'imagePath': instance.imagePath,
     };
+
+const _$DishTypeEnumMap = {
+  DishType.salad: 'salad',
+  DishType.soup: 'soup',
+  DishType.garnish: 'garnish',
+  DishType.secondDish: 'secondDish',
+};
