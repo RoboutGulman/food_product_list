@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_product_list/data/dish.dart';
-import 'package:food_product_list/widgets/change_button.dart';
-import 'package:food_product_list/widgets/delete_button.dart';
+import 'package:food_product_list/utils/buttons/change_button.dart';
+import 'package:food_product_list/utils/buttons/delete_button.dart';
 import 'package:food_product_list/widgets/dish_form/dish_form_dialog.dart';
 import 'package:food_product_list/widgets/dishes_table/confirm_delete_dialog.dart';
 import 'package:food_product_list/widgets/bold_text.dart';
