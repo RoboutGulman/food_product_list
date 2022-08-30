@@ -2,28 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
-class CoreTextForm extends StatelessWidget {
-  const CoreTextForm({Key? key, required this.name, required this.label})
-      : super(key: key);
-
-  final String name;
-  final String label;
+class CostInput extends StatelessWidget {
+  const CostInput({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return FormBuilderTextField(
-      name: name,
-      decoration: InputDecoration(
-        border: const OutlineInputBorder(
+      name: 'cost',
+      initialValue: '0',
+      decoration: const InputDecoration(
+        border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(5.0))),
-        labelText: label,
+        labelText: 'стоимость',
       ),
       autovalidateMode: AutovalidateMode.always,
-      keyboardType: TextInputType.text,
+      keyboardType: TextInputType.number,
       validator: FormBuilderValidators.compose(
-        [
-          FormBuilderValidators.required(),
-        ],
+        [FormBuilderValidators.required(), FormBuilderValidators.numeric()],
       ),
     );
   }

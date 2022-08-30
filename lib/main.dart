@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:food_product_list/home_page.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:food_product_list/widgets/dish_form/dish_form.dart';
+import 'package:food_product_list/widgets/dish_form/dish_form_dialog.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
 void main() {
@@ -23,13 +23,7 @@ class MyApp extends StatelessWidget {
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
-      //TODO:
-      //сделать popUp или alertDialog вместо навигации
-      routes: {
-        '/': (context) => const HomePage(),
-        '/dish_forms': (context) => const DishForms()
-      },
-      initialRoute: '/',
+      home: const HomePage(),
     );
   }
 }
