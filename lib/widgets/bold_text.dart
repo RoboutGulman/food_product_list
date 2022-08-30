@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:functional_widget_annotation/functional_widget_annotation.dart';
 
-class BoldText extends StatelessWidget {
-  const BoldText(this.text, {Key? key}) : super(key: key);
+part 'bold_text.g.dart';
 
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(text, style: const TextStyle(fontWeight: FontWeight.bold));
-  }
+@swidget
+Widget boldText(String text) {
+  return Text(text, style: const TextStyle(fontWeight: FontWeight.bold));
 }
