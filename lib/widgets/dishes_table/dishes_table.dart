@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:food_product_list/data/dish.dart';
-import 'package:food_product_list/widgets/dish_form/dish_form.dart';
-import 'package:food_product_list/widgets/text_with_padding.dart';
+import 'package:food_product_list/widgets/dish_form/dish_form_dialog.dart';
+import 'package:food_product_list/widgets/dishes_table/confirm_delete_dialog.dart';
+import 'package:food_product_list/widgets/bold_text.dart';
 
-const TableRow _tableHeader = TableRow(
-  children: <Widget>[
-    TextWithPadding(text: 'Название', isBold: true),
-    TextWithPadding(text: 'Стоимость', isBold: true),
-    TextWithPadding(text: 'Тип', isBold: true),
-    TextWithPadding(text: 'Вес', isBold: true),
-    SizedBox(height: 40),
-    SizedBox.shrink(),
-  ],
-);
+const _columns = [
+  DataColumn(label: BoldText('Название')),
+  DataColumn(label: BoldText('Стоимость')),
+  DataColumn(label: BoldText('Тип')),
+  DataColumn(label: BoldText('Вес')),
+  DataColumn(label: SizedBox(height: 40)),
+  DataColumn(label: SizedBox.shrink()),
+];
 
 class DishesTable extends StatelessWidget {
   const DishesTable({Key? key, required this.dishes}) : super(key: key);
@@ -22,47 +21,51 @@ class DishesTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      //TODO:
-      //dataTable вместо Table
-      child: Table(
-        border: TableBorder.all(),
-        columnWidths: const <int, TableColumnWidth>{
-          2: FixedColumnWidth(110),
-          3: FixedColumnWidth(50),
-          4: FixedColumnWidth(40),
-          5: FixedColumnWidth(40),
-        },
-        defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-        children: [
-          _tableHeader,
-          ...dishes
-              .map(
-                (dish) => TableRow(
-                  children: <Widget>[
-                    TextWithPadding(text: dish.name),
-                    TextWithPadding(text: dish.price.toStringAsFixed(2)),
-                    TextWithPadding(text: dish.type.name ?? ''),
-                    TextWithPadding(text: dish.weight),
+      child: DataTable(
+        border: TableBorder.all(color: const Color(0xffdcdddc), width: 1),
+        columns: _columns,
+        rows: dishes
+            .map(
+              (dish) => DataRow(
+                cells: [
+                  DataCell(Text(dish.name)),
+                  DataCell(Text(dish.price.toStringAsFixed(2))),
+                  DataCell(Text(dish.type.name ?? '')),
+                  DataCell(Text(dish.weight)),
+                  DataCell(
                     IconButton(
-                      onPressed: () =>
-                          {Navigator.pushNamed(context, '/dish_forms')},
+                      onPressed: () => {
+                        showDialog<String>(
+                          context: context,
+                          builder: (BuildContext context) =>
+                              DishFormDialog(dish: dish),
+                        ),
+                      },
                       icon: const Icon(
                         Icons.border_color,
                         color: Colors.blue,
                       ),
                     ),
+                  ),
+                  DataCell(
                     IconButton(
-                      onPressed: () => {},
+                      onPressed: () => {
+                        showDialog<String>(
+                          context: context,
+                          builder: (BuildContext context) =>
+                              ConfirmDeleteDialog(dish: dish),
+                        ),
+                      },
                       icon: const Icon(
                         Icons.clear,
                         color: Colors.red,
                       ),
                     ),
-                  ],
-                ),
-              )
-              .toList()
-        ],
+                  )
+                ],
+              ),
+            )
+            .toList(),
       ),
     );
   }
