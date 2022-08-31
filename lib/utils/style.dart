@@ -23,3 +23,8 @@ class ColorPalette {
 
   static const Color accent = Color(0xff7ca2c8);
 }
+
+class DishForm {
+  static const border =
+      OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(5.0)));
+}

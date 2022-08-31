@@ -1,27 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:food_product_list/utils/style.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:functional_widget_annotation/functional_widget_annotation.dart';
 
-part 'core_text_input.g.dart';
+part 'core_input.g.dart';
 
 @swidget
-Widget coreTextInput({
+Widget coreInput({
   required String name,
   required String label,
+  bool isNumeric = false,
+  bool isRequired = false,
 }) {
   return FormBuilderTextField(
     name: name,
+    initialValue: isNumeric ? '0' : '',
     decoration: InputDecoration(
-      border: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(5.0))),
+      border: DishForm.border,
       labelText: label,
     ),
     autovalidateMode: AutovalidateMode.always,
-    keyboardType: TextInputType.text,
+    keyboardType: isNumeric ? TextInputType.number : TextInputType.text,
     validator: FormBuilderValidators.compose(
       [
-        FormBuilderValidators.required(),
+        if (isRequired) FormBuilderValidators.required(),
+        if (isNumeric) FormBuilderValidators.numeric()
       ],
     ),
   );

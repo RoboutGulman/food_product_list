@@ -1,20 +1,23 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'core_text_input.dart';
+part of 'core_dropdown_input.dart';
 
 // **************************************************************************
 // FunctionalWidgetGenerator
 // **************************************************************************
 
-class CoreTextInput extends StatelessWidget {
-  const CoreTextInput({Key? key, required this.name, required this.label})
+class CoreDropdownInput extends StatelessWidget {
+  const CoreDropdownInput(
+      {Key? key, required this.name, required this.label, required this.items})
       : super(key: key);
 
   final String name;
 
   final String label;
 
+  final List<String> items;
+
   @override
   Widget build(BuildContext _context) =>
-      coreTextInput(name: name, label: label);
+      coreDropdownInput(name: name, label: label, items: items);
 }

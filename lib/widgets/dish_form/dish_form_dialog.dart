@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:food_product_list/data/dish.dart';
-import 'package:food_product_list/widgets/dish_form/core_text_input.dart';
-import 'package:food_product_list/widgets/dish_form/cost_input.dart';
+import 'package:food_product_list/widgets/dish_form/core_input.dart';
 import 'package:food_product_list/widgets/dish_form/description_input.dart';
-import 'package:food_product_list/widgets/dish_form/supplier_input.dart';
+import 'package:food_product_list/widgets/dish_form/core_dropdown_input.dart';
 import 'package:gap/gap.dart';
 
 class DishFormDialog extends StatefulWidget {
@@ -30,13 +29,39 @@ class _DishFormDialogState extends State<DishFormDialog> {
               //переименовать form в Field/input
               //сократить количество виджетов
 
-              const SupplierInput(),
+              const CoreDropdownInput(
+                name: 'supplier',
+                label: 'Поставщик',
+                items: [
+                  'поставщик 1',
+                  'Поставщик 2',
+                ],
+              ),
               const Gap(10),
-              const CoreTextInput(name: 'name', label: 'название'),
+              const CoreInput(
+                name: 'name',
+                label: 'название',
+                isRequired: true,
+              ),
               const Gap(10),
               const DescriptionInput(),
               const Gap(10),
-              const CostInput(),
+              const CoreInput(
+                name: 'cost',
+                label: 'стоимость',
+                isNumeric: true,
+              ),
+              const Gap(10),
+              CoreDropdownInput(
+                name: 'type',
+                label: 'Тип',
+                items: DishType.values.map((dish) => dish.name ?? '').toList(),
+              ),
+              const Gap(10),
+              const CoreInput(
+                name: 'weight',
+                label: 'вес',
+              ),
               const Gap(10),
               Row(
                 children: <Widget>[
