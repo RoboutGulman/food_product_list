@@ -7,9 +7,9 @@ import 'package:food_product_list/widgets/dish_form/core_dropdown_input.dart';
 import 'package:gap/gap.dart';
 
 class DishFormDialog extends StatefulWidget {
-  const DishFormDialog({Key? key, required this.dish}) : super(key: key);
+  DishFormDialog(this.dish, {Key? key}) : super(key: key);
 
-  final Dish dish;
+  Dish? dish;
 
   @override
   State<DishFormDialog> createState() => _DishFormDialogState();
@@ -17,18 +17,28 @@ class DishFormDialog extends StatefulWidget {
 
 class _DishFormDialogState extends State<DishFormDialog> {
   final _formKey = GlobalKey<FormBuilderState>();
+
   @override
   Widget build(BuildContext context) {
+    final dish = widget.dish;
+
     return AlertDialog(
+      title: const Text('Редактирование блюда'),
       content: FormBuilder(
         key: _formKey,
+        initialValue: {
+          'supplier': 'поставщик 1', //откуда брать данные?
+          'name': dish?.name,
+          'description': dish?.description,
+          'price': dish?.price.toStringAsFixed(2) ?? '0',
+          'type': dish?.type.name ?? DishType.values[0].name,
+          'weight': dish?.weight,
+          'without garnish': false, //откуда брать данные?
+        },
         child: SingleChildScrollView(
           child: Column(
             children: [
-              //TODO:
-              //переименовать form в Field/input
-              //сократить количество виджетов
-
+              const Gap(5),
               const CoreDropdownInput(
                 name: 'supplier',
                 label: 'Поставщик',
@@ -47,7 +57,7 @@ class _DishFormDialogState extends State<DishFormDialog> {
               const DescriptionInput(),
               const Gap(10),
               const CoreInput(
-                name: 'cost',
+                name: 'price',
                 label: 'стоимость',
                 isNumeric: true,
               ),
@@ -61,6 +71,18 @@ class _DishFormDialogState extends State<DishFormDialog> {
               const CoreInput(
                 name: 'weight',
                 label: 'вес',
+              ),
+              const Gap(10),
+              FormBuilderField<bool>(
+                name: 'without garnish',
+                builder: (FormFieldState field) {
+                  return CheckboxListTile(
+                    title: const Text('Без гарнира'),
+                    value: field.value,
+                    controlAffinity: ListTileControlAffinity.leading,
+                    onChanged: (value) => field.didChange(value),
+                  );
+                },
               ),
               const Gap(10),
               Row(

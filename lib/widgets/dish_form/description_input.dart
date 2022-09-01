@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:food_product_list/utils/style.dart';
+import 'package:food_product_list/utils/style.dart' as style;
 import 'package:functional_widget_annotation/functional_widget_annotation.dart';
 
 part 'description_input.g.dart';
@@ -11,7 +11,7 @@ Widget descriptionInput() {
     child: FormBuilderTextField(
       name: 'description',
       decoration: const InputDecoration(
-        border: DishForm.border,
+        border: style.BorderStyle.border,
         labelText: 'описание',
       ),
       autovalidateMode: AutovalidateMode.always,

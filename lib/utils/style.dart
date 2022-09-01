@@ -24,7 +24,11 @@ class ColorPalette {
   static const Color accent = Color(0xff7ca2c8);
 }
 
-class DishForm {
+class BorderStyle {
   static const border =
       OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(5.0)));
+}
+
+class TextStyles {
+  static const boldText = TextStyle(fontWeight: FontWeight.bold);
 }

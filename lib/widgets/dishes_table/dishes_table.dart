@@ -4,17 +4,16 @@ import 'package:food_product_list/utils/buttons/change_button.dart';
 import 'package:food_product_list/utils/buttons/delete_button.dart';
 import 'package:food_product_list/widgets/dish_form/dish_form_dialog.dart';
 import 'package:food_product_list/widgets/dishes_table/confirm_delete_dialog.dart';
-import 'package:food_product_list/widgets/bold_text.dart';
 import 'package:functional_widget_annotation/functional_widget_annotation.dart';
 
 part 'dishes_table.g.dart';
 
 const _columns = [
-  DataColumn(label: BoldText('Название')),
-  DataColumn(label: BoldText('Стоимость')),
-  DataColumn(label: BoldText('Тип')),
-  DataColumn(label: BoldText('Вес')),
-  DataColumn(label: SizedBox(height: 40)),
+  DataColumn(label: Text('Название')),
+  DataColumn(label: Text('Стоимость')),
+  DataColumn(label: Text('Тип')),
+  DataColumn(label: Text('Вес')),
+  DataColumn(label: SizedBox.shrink()),
   DataColumn(label: SizedBox.shrink()),
 ];
 
@@ -37,8 +36,7 @@ Widget dishesTable(BuildContext context, {required List<Dish> dishes}) {
                     onPressed: () => {
                       showDialog<String>(
                         context: context,
-                        builder: (BuildContext context) =>
-                            DishFormDialog(dish: dish),
+                        builder: (BuildContext context) => DishFormDialog(dish),
                       ),
                     },
                   ),

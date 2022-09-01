@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:food_product_list/utils/style.dart';
+import 'package:food_product_list/utils/style.dart' as style;
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:functional_widget_annotation/functional_widget_annotation.dart';
 
@@ -15,10 +15,9 @@ Widget coreDropdownInput({
   return FormBuilderDropdown<String>(
     name: name,
     decoration: InputDecoration(
-      border: DishForm.border,
+      border: style.BorderStyle.border,
       labelText: label,
     ),
-    initialValue: items[0],
     validator:
         FormBuilderValidators.compose([FormBuilderValidators.required()]),
     items: items
