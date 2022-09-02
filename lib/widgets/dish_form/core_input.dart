@@ -27,5 +27,7 @@ Widget coreInput({
         if (isNumeric) FormBuilderValidators.numeric()
       ],
     ),
+    valueTransformer: (val) =>
+        isNumeric ? double.tryParse(val ?? '0') : val?.toString(),
   );
 }

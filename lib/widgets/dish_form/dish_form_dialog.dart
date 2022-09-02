@@ -6,10 +6,24 @@ import 'package:food_product_list/widgets/dish_form/description_input.dart';
 import 'package:food_product_list/widgets/dish_form/core_dropdown_input.dart';
 import 'package:gap/gap.dart';
 
-class DishFormDialog extends StatefulWidget {
-  DishFormDialog(this.dish, {Key? key}) : super(key: key);
+void saveDish(int? id, Map<String, dynamic> value) {
+  final type = DishType.values.firstWhere((dish) => dish.name == value['type']);
+  final dish = Dish(
+    id: id ?? 0,
+    name: value['name'],
+    price: value['price'],
+    description: value['description'],
+    type: type,
+    weight: value['weight'],
+    imagePath: value['imagePath'] ?? '',
+  );
+  print(dish.toString());
+}
 
-  Dish? dish;
+class DishFormDialog extends StatefulWidget {
+  const DishFormDialog(this.dish, {Key? key}) : super(key: key);
+
+  final Dish? dish;
 
   @override
   State<DishFormDialog> createState() => _DishFormDialogState();
@@ -97,7 +111,9 @@ class _DishFormDialogState extends State<DishFormDialog> {
                       onPressed: () {
                         _formKey.currentState!.save();
                         if (_formKey.currentState!.validate()) {
-                          debugPrint(_formKey.currentState!.value.toString());
+                          final value = _formKey.currentState!.value;
+                          // debugPrint(_formKey.currentState!.value.toString());
+                          saveDish(dish?.id, value);
                         } else {
                           debugPrint("validation failed");
                         }
